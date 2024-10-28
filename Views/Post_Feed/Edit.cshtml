@@ -1,0 +1,29 @@
+﻿@model Api_Post_Eventos_Vfinal.Models.Post_Feed
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Post Feed</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="IDdePost" class="control-label">Post</label>
+        <select asp-for="IDdePost" class="form-control" asp-items="@(new SelectList(ViewBag.Posts, "ID", "descripcion"))">
+            <option value="">Select a Post</option>
+        </select>
+        <span asp-validation-for="IDdePost" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IDdeCuenta" class="control-label">ID de Cuenta</label>
+        <input asp-for="IDdeCuenta" class="form-control" />
+        <span asp-validation-for="IDdeCuenta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<p>
+    <a asp-action="Index">Back to List</a>
+</p>

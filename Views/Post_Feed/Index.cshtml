@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Api_Post_Eventos_Vfinal.Models.Post_Feed>
+
+@{
+    ViewData["Title"] = "Post Feed";
+}
+
+<h1>Post Feed</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Post Feed</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID de Post</th>
+            <th>ID de Cuenta</th>
+            <th>Descripción</th>
+            <th>Fecha de Publicación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IDdePost</td>
+                <td>@item.IDdeCuenta</td>
+                <td>@item.post?.descripcion</td>
+                <td>@item.post?.fecha_pub</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IDdePost">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.IDdePost">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IDdePost">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

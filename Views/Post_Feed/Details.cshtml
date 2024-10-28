@@ -1,0 +1,45 @@
+﻿
+@model Api_Post_Eventos_Vfinal.Models.Post_Feed
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Post Feed Details</h1>
+
+<div>
+    <h4>Post Feed</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ID de Post
+        </dt>
+        <dd class="col-sm-10">
+            @Model.IDdePost
+        </dd>
+        <dt class="col-sm-2">
+            ID de Cuenta
+        </dt>
+        <dd class="col-sm-10">
+            @Model.IDdeCuenta
+        </dd>
+        <dt class="col-sm-2">
+            Descripción
+        </dt>
+        <dd class="col-sm-10">
+            @Model.post?.descripcion
+        </dd>
+        <dt class="col-sm-2">
+            Fecha de Publicación
+        </dt>
+        <dd class="col-sm-10">
+            @Model.post?.fecha_pub
+        </dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.IDdePost">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
+
