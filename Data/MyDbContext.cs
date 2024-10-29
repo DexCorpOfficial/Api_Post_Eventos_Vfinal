@@ -24,33 +24,18 @@ namespace Api_Post_Eventos_Vfinal.Data
             modelBuilder.Entity<Post>()
             .ToTable("Post")
             .HasKey(p => p.ID);
-            
-            modelBuilder.Entity<Post_Feed>()
-            .ToTable("Post_Feed")
-            .HasKey(pf => pf.IDdePost); 
 
             modelBuilder.Entity<Post_Feed>()
-                .HasOne(pf => pf.post) 
-                .WithOne() 
-                .HasForeignKey<Post_Feed>(pf => pf.IDdePost);
-            
-            modelBuilder.Entity<Post_Banda>()
-            .ToTable("Post_Banda")
-            .HasKey(pf => pf.IDdePost);
+            .ToTable("Post_Feed").HasKey(pf => pf.IDdePost);
+
+            modelBuilder.Entity<Post_Feed>().HasOne(pf => pf.post).WithMany().HasForeignKey(pf => pf.IDdePost)
+            .OnDelete(DeleteBehavior.Cascade); ;
 
             modelBuilder.Entity<Post_Banda>()
-                .HasOne(pf => pf.post)
-                .WithOne()
-                .HasForeignKey<Post_Banda>(pf => pf.IDdePost);
-            
-            modelBuilder.Entity<Post_Evento>()
-            .ToTable("Post_Evento")
-            .HasKey(pf => pf.IDdePost);
+            .ToTable("Post_Banda");
 
             modelBuilder.Entity<Post_Evento>()
-                .HasOne(pf => pf.post)
-                .WithOne()
-                .HasForeignKey<Post_Evento>(pf => pf.IDdePost);
+            .ToTable("Post_Evento");
 
             /* modelBuilder.Entity<Post_Feed>()
                  .HasOne(pf => pf.Cuenta)
