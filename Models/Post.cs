@@ -12,10 +12,9 @@ namespace Api_Post_Eventos_Vfinal.Models
         public string descripcion { get; set; }
         public DateTime fecha_pub { get; set; } = DateTime.Now;
         public bool activo { get; set; } = true;
-        public ICollection<Post_Feed> PostsDeFeed { get; set; }
-        public ICollection<Post_Banda> PostsDeBanda { get; set; }
-        public ICollection<Post_Evento> PostsDeEvento { get; set; }
-        public ICollection<Comentario> Comentarios { get; set; }
-        public Evento evento { get; set; }
+        public virtual ICollection<Post_Feed> PostsDeFeed { get; set; } = new List<Post_Feed>();
+        public virtual ICollection<Post_Banda> PostsDeBanda { get; set; } = new List<Post_Banda>();
+        public virtual ICollection<Post_Evento> PostsDeEvento { get; set; } = new List<Post_Evento>();
+        public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
     }
 }
