@@ -23,7 +23,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var myDbContext = _context.PostEvento.Include(p => p.Evento);
+            var myDbContext = _context.PostEvento.Include(p => p.evento);
             return View(await myDbContext.ToListAsync());
         }
 
@@ -36,8 +36,8 @@ namespace Api_Post_Eventos_Vfinal.Controllers
             }
 
             var post_Evento = await _context.PostEvento
-                .Include(p => p.Evento)
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(p => p.evento)
+                .FirstOrDefaultAsync(m => m.IDdePost == id);
             if (post_Evento == null)
             {
                 return NotFound();
@@ -94,7 +94,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IDdeCuenta,IDdeEvento,ID,media,descripcion,fecha_pub,activo")] Post_Evento post_Evento)
         {
-            if (id != post_Evento.ID)
+            if (id != post_Evento.IDdePost)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Post_EventoExists(post_Evento.ID))
+                    if (!Post_EventoExists(post_Evento.IDdePost))
                     {
                         return NotFound();
                     }
@@ -132,8 +132,8 @@ namespace Api_Post_Eventos_Vfinal.Controllers
             }
 
             var post_Evento = await _context.PostEvento
-                .Include(p => p.Evento)
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(p => p.evento)
+                .FirstOrDefaultAsync(m => m.IDdePost == id);
             if (post_Evento == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
 
         private bool Post_EventoExists(int id)
         {
-            return _context.PostEvento.Any(e => e.ID == id);
+            return _context.PostEvento.Any(e => e.IDdePost == id);
         }
     }
 }

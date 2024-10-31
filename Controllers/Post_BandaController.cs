@@ -34,7 +34,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
             }
 
             var post_Banda = await _context.PostBanda
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.IDdePost == id);
             if (post_Banda == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IDdeCuenta,IDdeBanda,ID,media,descripcion,fecha_pub,activo")] Post_Banda post_Banda)
         {
-            if (id != post_Banda.ID)
+            if (id != post_Banda.IDdePost)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!Post_BandaExists(post_Banda.ID))
+                    if (!Post_BandaExists(post_Banda.IDdePost))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
             }
 
             var post_Banda = await _context.PostBanda
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.IDdePost == id);
             if (post_Banda == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace Api_Post_Eventos_Vfinal.Controllers
 
         private bool Post_BandaExists(int id)
         {
-            return _context.PostBanda.Any(e => e.ID == id);
+            return _context.PostBanda.Any(e => e.IDdePost == id);
         }
     }
 }

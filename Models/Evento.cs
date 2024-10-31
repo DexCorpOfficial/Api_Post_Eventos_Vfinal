@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Api_Post_Eventos_Vfinal.Models
 {
@@ -10,6 +11,7 @@ namespace Api_Post_Eventos_Vfinal.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public bool activo { get; set; } = true;
+        public ICollection <Post_Evento> PostsDeEvento { get; set; }
 
     }
 }

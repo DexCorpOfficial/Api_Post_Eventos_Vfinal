@@ -19,16 +19,16 @@
                 @Html.DisplayNameFor(model => model.IDdeBanda)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.media)
+                @Html.DisplayNameFor(model => model.post.media)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                @Html.DisplayNameFor(model => model.post.descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fecha_pub)
+                @Html.DisplayNameFor(model => model.post.fecha_pub)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.activo)
+                @Html.DisplayNameFor(model => model.post.activo)
             </th>
             <th></th>
         </tr>
@@ -43,21 +43,21 @@
                 @Html.DisplayFor(modelItem => item.IDdeBanda)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.media)
+                @Html.DisplayFor(modelItem => item.post.media)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
+                @Html.DisplayFor(modelItem => item.post.descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fecha_pub)
+                @Html.DisplayFor(modelItem => item.post.fecha_pub)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.activo)
+                @Html.DisplayFor(modelItem => item.post.activo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IDdePost">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IDdePost">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IDdePost">Delete</a>
             </td>
         </tr>
 }
